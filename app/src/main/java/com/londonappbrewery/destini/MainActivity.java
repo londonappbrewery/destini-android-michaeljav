@@ -18,16 +18,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//al cambiar o rotal arreglar
-            if (savedInstanceState != null){
-                mStoryIndex = savedInstanceState.getInt("mStoryIndex");
 
-            }
         // TODO: Step 5 - Wire up the 3 views from the layout to the member variables:
         storyTextView = findViewById(R.id.storyTextView);
         buttonTop = findViewById(R.id.buttonTop);
         buttonBottom = findViewById(R.id.buttonBottom);
         mStoryIndex = 1;
+
+
+        //al cambiar o rotal arreglar
+        if (savedInstanceState != null){
+          //  mStoryIndex = savedInstanceState.getInt("mStoryIndex");
+
+//            buttonTop.setText(savedInstanceState.getInt("tempButtonTop"));
+//            buttonBottom.setText(savedInstanceState.getInt("tempButtonBottom"));
+
+        }
 
         // TODO: Steps 6, 7, & 9 - Set a listener on the top button:
          buttonTop.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+
     private void updateViewTextButton(int text, int btnTop, int btnBottom,int straStory,int visiButon){
 
         storyTextView.setText(text);
@@ -96,7 +105,10 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
 
         outState.putInt("mStoryIndex",mStoryIndex);
-
+        //get text button top
+       //Button tempBtnTop = findViewById(R.id.buttonTop);
+        outState.putCharSequence("tempButtonTop",buttonTop.getText());
+       outState.putCharSequence("tempButtonBottom",buttonTop.getText());
    }
 
 }
